@@ -67,7 +67,6 @@ SharpEdge/
 
 - `Node.js 18+`
 - `Python 3.9+`
-- A `Supabase` project
 - A `The Odds API` key
 
 ### Environment Variables
