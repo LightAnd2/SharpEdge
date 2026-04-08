@@ -1,0 +1,49 @@
+Brand asset folders
+
+Root:
+- /Users/andrew/Desktop/SharpEdge/frontend/public/branding/
+
+Folders:
+- teams/
+- leagues/
+- sportsbooks/
+
+Suggested formats:
+- SVG preferred
+- Transparent PNG is fine
+
+Suggested naming:
+
+Leagues
+- nfl.svg
+- nba.svg
+- mlb.svg
+- nhl.svg
+
+Sportsbooks
+- draftkings.svg
+- fanduel.svg
+- betmgm.svg
+- betrivers.svg
+- bovada.svg
+- betonlineag.svg
+- lowvig.svg
+- mybookieag.svg
+- pointsbetus.svg
+- unibet_us.svg
+- williamhill_us.svg
+
+Teams
+- Use normalized slugs, for example:
+- chicago-bulls.svg
+- washington-wizards.svg
+- miami-heat.svg
+- toronto-raptors.svg
+
+Notes
+- Team filenames should match a slugged version of the team name.
+- If you want, I can add automatic fallback logic so:
+  1. real logo file shows when present
+  2. text/shape fallback shows when missing
+
+After you drop assets in, tell me and I can wire the whole UI to use them.
