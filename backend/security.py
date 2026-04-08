@@ -1,10 +1,8 @@
-import os
 import time
 import threading
 from functools import wraps
 from collections import defaultdict
 from flask import request, jsonify
-import jwt
 
 # ---------------------------------------------------------------------------
 # Rate limiting
@@ -68,30 +66,3 @@ def invalidate_cache(prefix=None):
                 del _cache[k]
         else:
             _cache.clear()
-
-
-# ---------------------------------------------------------------------------
-# Supabase JWT auth
-# ---------------------------------------------------------------------------
-def require_auth(f):
-    @wraps(f)
-    def wrapper(*args, **kwargs):
-        auth_header = request.headers.get("Authorization", "")
-        if not auth_header.startswith("Bearer "):
-            return jsonify({"error": "Unauthorized"}), 401
-        token = auth_header.split(" ", 1)[1]
-        jwt_secret = os.getenv("SUPABASE_JWT_SECRET", "")
-        try:
-            payload = jwt.decode(
-                token,
-                jwt_secret,
-                algorithms=["HS256"],
-                options={"verify_aud": False},
-            )
-            request.user_id = payload.get("sub")
-        except jwt.ExpiredSignatureError:
-            return jsonify({"error": "Token expired"}), 401
-        except jwt.InvalidTokenError:
-            return jsonify({"error": "Invalid token"}), 401
-        return f(*args, **kwargs)
-    return wrapper

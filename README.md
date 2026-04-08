@@ -34,7 +34,6 @@ SharpEdge focuses on:
 - Spread, moneyline, and totals comparison
 - Best-number highlighting by row
 - Per-game detail view with line-movement chart
-- Alerts flow backed by Supabase
 - League, team, and sportsbook logo support
 - Free-plan-safer odds fetching with conservative caching
 
@@ -43,7 +42,6 @@ SharpEdge focuses on:
 - Frontend: `React`, `Vite`, `React Router`, `Recharts`
 - Backend: `Flask`, `Gunicorn`
 - Data: `SQLite` snapshot storage
-- Auth / alerts: `Supabase`
 - Odds source: `The Odds API`
 
 ## Project Structure
@@ -84,9 +82,6 @@ Backend variables:
 ```env
 ODDS_API_KEY=your_odds_api_key_here
 STALE_MINUTES=180
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_SERVICE_KEY=your_service_role_key_here
-SUPABASE_JWT_SECRET=your_jwt_secret_here
 CORS_ORIGINS=http://localhost:5173
 DB_PATH=sharpedge.db
 FLASK_ENV=development
@@ -96,8 +91,6 @@ Frontend variables:
 
 ```env
 VITE_API_BASE_URL=http://localhost:5001
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
 ```
 
 ## Running Locally
@@ -136,7 +129,7 @@ npm run build
 Backend syntax check:
 
 ```bash
-python3 -m py_compile backend/routes/alerts.py backend/routes/odds.py backend/scheduler.py backend/app.py
+python3 -m py_compile backend/routes/odds.py backend/scheduler.py backend/app.py
 ```
 
 ## Notes
@@ -150,4 +143,3 @@ python3 -m py_compile backend/routes/alerts.py backend/routes/odds.py backend/sc
 
 > [!NOTE]
 > This project is currently optimized for solo use and iterative product development, not high-traffic production deployment.
-
