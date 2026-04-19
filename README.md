@@ -133,12 +133,4 @@ python3 -m py_compile backend/routes/odds.py backend/scheduler.py backend/app.py
 
 ## Notes
 
-> [!IMPORTANT]
-> SharpEdge currently uses a conservative odds refresh strategy designed to be safer on a free The Odds API plan.
-
-- `STALE_MINUTES=180` makes refreshes much less aggressive
-- selected sport pages may refresh stale data
-- the `All Sports` page is cache-first to reduce accidental credit burn
-
-> [!NOTE]
-> This project is currently optimized for solo use and iterative product development, not high-traffic production deployment.
+SharpEdge is built around the constraints of The Odds API free tier (500 credits/month). The refresh strategy is intentionally conservative to maximize data freshness within that limit -- `STALE_MINUTES=180` prevents unnecessary credit burn while keeping lines reasonably current. A paid API tier would allow significantly tighter polling intervals and support higher concurrent users.
